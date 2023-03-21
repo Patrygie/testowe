@@ -1,5 +1,5 @@
 Middlewares/FreeRTOS/queue.o: \
- C:/Users/patry/Desktop/Testowe\ repo/mcs_screen_app/Middlewares/Third_Party/FreeRTOS/Source/queue.c \
+ C:/Users/patry/Desktop/again/mcs_screen_app/Middlewares/Third_Party/FreeRTOS/Source/queue.c \
  ../../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h \
  ../../Core/Inc/FreeRTOSConfig.h \
  ../../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h \

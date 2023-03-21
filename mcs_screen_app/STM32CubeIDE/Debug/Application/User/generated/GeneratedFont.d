@@ -1,5 +1,5 @@
 Application/User/generated/GeneratedFont.o: \
- C:/Users/patry/Desktop/Testowe\ repo/mcs_screen_app/TouchGFX/generated/fonts/src/GeneratedFont.cpp \
+ C:/Users/patry/Desktop/again/mcs_screen_app/TouchGFX/generated/fonts/src/GeneratedFont.cpp \
  ../../TouchGFX/generated/fonts/include/fonts/GeneratedFont.hpp \
  ../../Middlewares/ST/touchgfx/framework/include/touchgfx/ConstFont.hpp \
  ../../Middlewares/ST/touchgfx/framework/include/touchgfx/Font.hpp \

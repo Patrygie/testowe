@@ -1,5 +1,5 @@
 Application/User/gui/Screen2View.o: \
- C:/Users/patry/Desktop/Testowe\ repo/mcs_screen_app/TouchGFX/gui/src/screen2_screen/Screen2View.cpp \
+ C:/Users/patry/Desktop/again/mcs_screen_app/TouchGFX/gui/src/screen2_screen/Screen2View.cpp \
  ../../TouchGFX/gui/include/gui/screen2_screen/Screen2View.hpp \
  ../../TouchGFX/generated/gui_generated/include/gui_generated/screen2_screen/Screen2ViewBase.hpp \
  ../../TouchGFX/gui/include/gui/common/FrontendApplication.hpp \

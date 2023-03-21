@@ -1,5 +1,5 @@
 Application/User/Core/main.o: \
- C:/Users/patry/Desktop/Testowe\ repo/mcs_screen_app/Core/Src/main.c \
+ C:/Users/patry/Desktop/again/mcs_screen_app/Core/Src/main.c \
  ../../Core/Inc/main.h \
  ../../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal.h \
  ../../Core/Inc/stm32f7xx_hal_conf.h \

@@ -7,25 +7,25 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
   1 .text         0002bda4  080001d0  080001d0  000101d0  2**4
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .rodata       00004bb8  0802bf78  0802bf78  0003bf78  2**3
+  2 .rodata       00004ba8  0802bf78  0802bf78  0003bf78  2**3
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  3 FontSearchFlashSection 00000044  08030b30  08030b30  00040b30  2**2
+  3 FontSearchFlashSection 00000044  08030b20  08030b20  00040b20  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  4 .ARM.extab    00000000  08030b74  08030b74  0013f9fc  2**0
+  4 .ARM.extab    00000000  08030b64  08030b64  0013f9fc  2**0
                   CONTENTS
-  5 .ARM          00000008  08030b74  08030b74  00040b74  2**2
+  5 .ARM          00000008  08030b64  08030b64  00040b64  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  6 .preinit_array 00000000  08030b7c  08030b7c  0013f9fc  2**0
+  6 .preinit_array 00000000  08030b6c  08030b6c  0013f9fc  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  7 .init_array   0000001c  08030b7c  08030b7c  00040b7c  2**2
+  7 .init_array   0000001c  08030b6c  08030b6c  00040b6c  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  8 .fini_array   00000008  08030b98  08030b98  00040b98  2**2
+  8 .fini_array   00000008  08030b88  08030b88  00040b88  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  9 .data         00000124  20000000  08030ba0  00050000  2**2
+  9 .data         00000124  20000000  08030b90  00050000  2**2
                   CONTENTS, ALLOC, LOAD, DATA
- 10 .bss          0001613c  20000124  08030cc4  00050124  2**2
+ 10 .bss          0001613c  20000124  08030cb4  00050124  2**2
                   ALLOC
- 11 ._user_heap_stack 00001400  20016260  08030cc4  00056260  2**0
+ 11 ._user_heap_stack 00001400  20016260  08030cb4  00056260  2**0
                   ALLOC
  12 .ARM.attributes 00000030  00000000  00000000  0013f9fc  2**0
                   CONTENTS, READONLY
@@ -49,13 +49,13 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  22 .debug_macro  0003aeb7  00000000  00000000  0029ef80  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 23 .debug_line   0007a52a  00000000  00000000  002d9e37  2**0
+ 23 .debug_line   0007a221  00000000  00000000  002d9e37  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 24 .debug_str    0012ac7c  00000000  00000000  00354361  2**0
+ 24 .debug_str    0012a943  00000000  00000000  00354058  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 25 .comment      000000cf  00000000  00000000  0047efdd  2**0
+ 25 .comment      000000cf  00000000  00000000  0047e99b  2**0
                   CONTENTS, READONLY
- 26 .debug_frame  0000a50c  00000000  00000000  0047f0ac  2**2
+ 26 .debug_frame  0000a50c  00000000  00000000  0047ea6c  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -1931,7 +1931,7 @@ __STATIC_INLINE void SCB_EnableICache (void)
   hi2c1.Init.Timing = 0x20404768;
  8001348:	e9c5 3600 	strd	r3, r6, [r5]
   hi2c1.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
- 800134c:	e9c5 7702 	strd	r7, r7, [r5, #8]
+ 800134c:	e9c5 4702 	strd	r4, r7, [r5, #8]
   hi2c1.Init.OwnAddress2 = 0;
  8001350:	e9c5 4404 	strd	r4, r4, [r5, #16]
   hi2c1.Init.GeneralCallMode = I2C_GENERALCALL_DISABLE;
@@ -3556,7 +3556,7 @@ LoopFillZerobss:
   ldr   sp, =_estack      /* set stack pointer */
  8001b64:	20050000 	.word	0x20050000
   ldr  r3, =_sidata
- 8001b68:	08030ba0 	.word	0x08030ba0
+ 8001b68:	08030b90 	.word	0x08030b90
   ldr  r0, =_sdata
  8001b6c:	20000000 	.word	0x20000000
   ldr  r3, =_edata
@@ -4714,7 +4714,7 @@ void OSWrappers::initialize()
  800209c:	0802c371 	.word	0x0802c371
  80020a0:	0802c3a0 	.word	0x0802c3a0
  80020a4:	2000040c 	.word	0x2000040c
- 80020a8:	0802c3fc 	.word	0x0802c3fc
+ 80020a8:	0802c3f5 	.word	0x0802c3f5
 
 080020ac <_ZN8touchgfx10OSWrappers24takeFrameBufferSemaphoreEv>:
 /*
@@ -4910,7 +4910,7 @@ STM32DMA::~STM32DMA()
  800218e:	f3bf 8f6f 	isb	sy
 }
  8002192:	4770      	bx	lr
- 8002194:	0802c5a8 	.word	0x0802c5a8
+ 8002194:	0802c59c 	.word	0x0802c59c
  8002198:	e000e100 	.word	0xe000e100
 
 0800219c <_ZN8STM32DMAD0Ev>:
@@ -4973,7 +4973,7 @@ struct colortype
  80021ee:	4620      	mov	r0, r4
  80021f0:	bd70      	pop	{r4, r5, r6, pc}
  80021f2:	bf00      	nop
- 80021f4:	0802c5a8 	.word	0x0802c5a8
+ 80021f4:	0802c59c 	.word	0x0802c59c
 
 080021f8 <_ZN8STM32DMA22getChromARTInputFormatEN8touchgfx6Bitmap12BitmapFormatE>:
 {
@@ -5007,9 +5007,9 @@ struct colortype
     return dma2dColorMode;
  8002228:	e7f2      	b.n	8002210 <_ZN8STM32DMA22getChromARTInputFormatEN8touchgfx6Bitmap12BitmapFormatE+0x18>
  800222a:	bf00      	nop
- 800222c:	0802c43e 	.word	0x0802c43e
- 8002230:	0802c459 	.word	0x0802c459
- 8002234:	0802c4a3 	.word	0x0802c4a3
+ 800222c:	0802c437 	.word	0x0802c437
+ 8002230:	0802c452 	.word	0x0802c452
+ 8002234:	0802c49c 	.word	0x0802c49c
 
 08002238 <_ZN8STM32DMA23getChromARTOutputFormatEN8touchgfx6Bitmap12BitmapFormatE>:
 {
@@ -5040,9 +5040,9 @@ struct colortype
     return dma2dColorMode;
  8002264:	e7f4      	b.n	8002250 <_ZN8STM32DMA23getChromARTOutputFormatEN8touchgfx6Bitmap12BitmapFormatE+0x18>
  8002266:	bf00      	nop
- 8002268:	0802c43e 	.word	0x0802c43e
- 800226c:	0802c4fd 	.word	0x0802c4fd
- 8002270:	0802c4a3 	.word	0x0802c4a3
+ 8002268:	0802c437 	.word	0x0802c437
+ 800226c:	0802c4ef 	.word	0x0802c4ef
+ 8002270:	0802c49c 	.word	0x0802c49c
 
 08002274 <_ZN8STM32DMA13setupDataCopyERKN8touchgfx6BlitOpE>:
  * BLIT_OP_COPY_ARGB8888_WITH_ALPHA
@@ -5284,9 +5284,9 @@ void STM32DMA::setupDataCopy(const BlitOp& blitOp)
  80023aa:	e7e3      	b.n	8002374 <_ZN8STM32DMA13setupDataCopyERKN8touchgfx6BlitOpE+0x100>
  80023ac:	4002b000 	.word	0x4002b000
  80023b0:	00010201 	.word	0x00010201
- 80023b4:	0802c548 	.word	0x0802c548
- 80023b8:	0802c562 	.word	0x0802c562
- 80023bc:	0802c4a3 	.word	0x0802c4a3
+ 80023b4:	0802c53a 	.word	0x0802c53a
+ 80023b8:	0802c554 	.word	0x0802c554
+ 80023bc:	0802c49c 	.word	0x0802c49c
  80023c0:	00020201 	.word	0x00020201
 
 080023c4 <_ZN8STM32DMA13setupDataFillERKN8touchgfx6BlitOpE>:
@@ -5485,9 +5485,9 @@ class SoftwareMJPEGDecoder : public MJPEGDecoder
  8002474:	4b02      	ldr	r3, [pc, #8]	; (8002480 <_ZN20SoftwareMJPEGDecoder15decodeThumbnailEmPhtt+0x14>)
  8002476:	4803      	ldr	r0, [pc, #12]	; (8002484 <_ZN20SoftwareMJPEGDecoder15decodeThumbnailEmPhtt+0x18>)
  8002478:	f028 fa74 	bl	802a964 <__assert_func>
- 800247c:	0802c5f0 	.word	0x0802c5f0
- 8002480:	0802e04b 	.word	0x0802e04b
- 8002484:	0802c64b 	.word	0x0802c64b
+ 800247c:	0802c5e4 	.word	0x0802c5e4
+ 8002480:	0802e03b 	.word	0x0802e03b
+ 8002484:	0802c63f 	.word	0x0802c63f
 
 08002488 <_ZN20SoftwareMJPEGDecoderD0Ev>:
  8002488:	b510      	push	{r4, lr}
@@ -5629,7 +5629,7 @@ void SoftwareMJPEGDecoder::decodeMJPEGFrame(const uint8_t* const mjpgdata, const
  8002586:	e9c0 2201 	strd	r2, r2, [r0, #4]
 }
  800258a:	4770      	bx	lr
- 800258c:	0802c938 	.word	0x0802c938
+ 800258c:	0802c928 	.word	0x0802c928
 
 08002590 <_ZN20SoftwareMJPEGDecoder7compareEmPKcm>:
 {
@@ -5757,9 +5757,9 @@ void SoftwareMJPEGDecoder::decodeMJPEGFrame(const uint8_t* const mjpgdata, const
  800263e:	4408      	add	r0, r1
  8002640:	e7fb      	b.n	800263a <_ZN20SoftwareMJPEGDecoder8readDataEmm+0x42>
  8002642:	bf00      	nop
- 8002644:	0802c6c4 	.word	0x0802c6c4
- 8002648:	0802c64b 	.word	0x0802c64b
- 800264c:	0802c6b1 	.word	0x0802c6b1
+ 8002644:	0802c6b1 	.word	0x0802c6b1
+ 8002648:	0802c63f 	.word	0x0802c63f
+ 800264c:	0802c69e 	.word	0x0802c69e
 
 08002650 <_ZN20SoftwareMJPEGDecoder13gotoNextFrameEv>:
 {
@@ -5854,9 +5854,9 @@ void SoftwareMJPEGDecoder::decodeMJPEGFrame(const uint8_t* const mjpgdata, const
  80026e2:	61a3      	str	r3, [r4, #24]
 }
  80026e4:	e8bd 83f8 	ldmia.w	sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
- 80026e8:	0802c706 	.word	0x0802c706
- 80026ec:	0802c74f 	.word	0x0802c74f
- 80026f0:	0802c64b 	.word	0x0802c64b
+ 80026e8:	0802c6f3 	.word	0x0802c6f3
+ 80026ec:	0802c73c 	.word	0x0802c73c
+ 80026f0:	0802c63f 	.word	0x0802c63f
 
 080026f4 <_ZN20SoftwareMJPEGDecoder11decodeFrameERKN8touchgfx4RectEPhm>:
 {
@@ -6024,9 +6024,9 @@ void SoftwareMJPEGDecoder::decodeMJPEGFrame(const uint8_t* const mjpgdata, const
  8002812:	f50d 7d1f 	add.w	sp, sp, #636	; 0x27c
  8002816:	e8bd 8ff0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, pc}
  800281a:	bf00      	nop
- 800281c:	0802c782 	.word	0x0802c782
- 8002820:	0802c7d8 	.word	0x0802c7d8
- 8002824:	0802c64b 	.word	0x0802c64b
+ 800281c:	0802c76f 	.word	0x0802c76f
+ 8002820:	0802c7c5 	.word	0x0802c7c5
+ 8002824:	0802c63f 	.word	0x0802c63f
  8002828:	fffff800 	.word	0xfffff800
 
 0800282c <_ZN20SoftwareMJPEGDecoder9gotoFrameEm>:
@@ -6322,19 +6322,19 @@ void SoftwareMJPEGDecoder::decodeMJPEGFrame(const uint8_t* const mjpgdata, const
  8002a1a:	230b      	movs	r3, #11
  8002a1c:	e7ef      	b.n	80029fe <_ZN20SoftwareMJPEGDecoder15readVideoHeaderEv+0x186>
  8002a1e:	bf00      	nop
- 8002a20:	0802c832 	.word	0x0802c832
- 8002a24:	0802c850 	.word	0x0802c850
- 8002a28:	0802c837 	.word	0x0802c837
- 8002a2c:	0802c64b 	.word	0x0802c64b
- 8002a30:	0802c87d 	.word	0x0802c87d
- 8002a34:	0802c882 	.word	0x0802c882
- 8002a38:	0802c89a 	.word	0x0802c89a
- 8002a3c:	0802c89f 	.word	0x0802c89f
- 8002a40:	0802c8b5 	.word	0x0802c8b5
- 8002a44:	0802c8c1 	.word	0x0802c8c1
- 8002a48:	0802c8c6 	.word	0x0802c8c6
- 8002a4c:	0802c8cb 	.word	0x0802c8cb
- 8002a50:	0802c8d0 	.word	0x0802c8d0
+ 8002a20:	0802c81f 	.word	0x0802c81f
+ 8002a24:	0802c83d 	.word	0x0802c83d
+ 8002a28:	0802c824 	.word	0x0802c824
+ 8002a2c:	0802c63f 	.word	0x0802c63f
+ 8002a30:	0802c86a 	.word	0x0802c86a
+ 8002a34:	0802c86f 	.word	0x0802c86f
+ 8002a38:	0802c887 	.word	0x0802c887
+ 8002a3c:	0802c88c 	.word	0x0802c88c
+ 8002a40:	0802c8a2 	.word	0x0802c8a2
+ 8002a44:	0802c8ae 	.word	0x0802c8ae
+ 8002a48:	0802c8b3 	.word	0x0802c8b3
+ 8002a4c:	0802c8b8 	.word	0x0802c8b8
+ 8002a50:	0802c8bd 	.word	0x0802c8bd
 
 08002a54 <_ZN20SoftwareMJPEGDecoder12setVideoDataEPKhm>:
     movieLength = length;
@@ -6501,9 +6501,9 @@ void SoftwareMJPEGDecoder::decodeMJPEGFrame(const uint8_t* const mjpgdata, const
         isCurrentFrameLast = false;
  8002b54:	2000      	movs	r0, #0
  8002b56:	e7f6      	b.n	8002b46 <_ZN20SoftwareMJPEGDecoder15decodeNextFrameEPhttm+0xaa>
- 8002b58:	0802c706 	.word	0x0802c706
- 8002b5c:	0802c8d5 	.word	0x0802c8d5
- 8002b60:	0802c64b 	.word	0x0802c64b
+ 8002b58:	0802c6f3 	.word	0x0802c6f3
+ 8002b5c:	0802c8c2 	.word	0x0802c8c2
+ 8002b60:	0802c63f 	.word	0x0802c63f
 
 08002b64 <_ZNK8touchgfx9PartitionINS_4meta8TypeListINS_12NoTransitionENS2_INS1_3NilES4_EEEELt1EE8capacityEv>:
     };
@@ -6616,7 +6616,7 @@ class Partition : public AbstractPartition
  8002bc8:	f015 fcd8 	bl	801857c <_ZN8touchgfx17AbstractPartitionD1Ev>
  8002bcc:	4620      	mov	r0, r4
  8002bce:	bd10      	pop	{r4, pc}
- 8002bd0:	0802c9e0 	.word	0x0802c9e0
+ 8002bd0:	0802c9d0 	.word	0x0802c9d0
 
 08002bd4 <_ZN8touchgfx9PartitionINS_4meta8TypeListINS_12NoTransitionENS2_INS1_3NilES4_EEEELt1EED0Ev>:
  8002bd4:	b510      	push	{r4, lr}
@@ -6636,7 +6636,7 @@ class Partition : public AbstractPartition
  8002bf0:	f015 fcc4 	bl	801857c <_ZN8touchgfx17AbstractPartitionD1Ev>
  8002bf4:	4620      	mov	r0, r4
  8002bf6:	bd10      	pop	{r4, pc}
- 8002bf8:	0802c9ac 	.word	0x0802c9ac
+ 8002bf8:	0802c99c 	.word	0x0802c99c
 
 08002bfc <_ZN8touchgfx9PartitionINS_4meta8TypeListI11Screen2ViewNS2_INS1_3NilES4_EEEELt1EED0Ev>:
  8002bfc:	b510      	push	{r4, lr}
@@ -6657,7 +6657,7 @@ class Partition : public AbstractPartition
  8002c1c:	f015 fcae 	bl	801857c <_ZN8touchgfx17AbstractPartitionD1Ev>
  8002c20:	4620      	mov	r0, r4
  8002c22:	bd10      	pop	{r4, pc}
- 8002c24:	0802c978 	.word	0x0802c978
+ 8002c24:	0802c968 	.word	0x0802c968
 
 08002c28 <_ZN8touchgfx9PartitionINS_4meta8TypeListI16Screen2PresenterNS2_INS1_3NilES4_EEEELt1EED0Ev>:
  8002c28:	b510      	push	{r4, lr}
@@ -6688,7 +6688,7 @@ class FrontendHeap : public FrontendHeapBase
  8002c58:	f7ff ffdc 	bl	8002c14 <_ZN8touchgfx9PartitionINS_4meta8TypeListI16Screen2PresenterNS2_INS1_3NilES4_EEEELt1EED1Ev>
  8002c5c:	4620      	mov	r0, r4
  8002c5e:	bd10      	pop	{r4, pc}
- 8002c60:	0802ca14 	.word	0x0802ca14
+ 8002c60:	0802ca04 	.word	0x0802ca04
 
 08002c64 <__tcf_0>:
                             > > CombinedTransitionTypes;
@@ -6825,10 +6825,10 @@ private:
  8002d48:	20000414 	.word	0x20000414
  8002d4c:	20000008 	.word	0x20000008
  8002d50:	20000418 	.word	0x20000418
- 8002d54:	0802ca14 	.word	0x0802ca14
- 8002d58:	0802c978 	.word	0x0802c978
- 8002d5c:	0802c9ac 	.word	0x0802c9ac
- 8002d60:	0802c9e0 	.word	0x0802c9e0
+ 8002d54:	0802ca04 	.word	0x0802ca04
+ 8002d58:	0802c968 	.word	0x0802c968
+ 8002d5c:	0802c99c 	.word	0x0802c99c
+ 8002d60:	0802c9d0 	.word	0x0802c9d0
  8002d64:	08002c65 	.word	0x08002c65
  8002d68:	20002288 	.word	0x20002288
 
@@ -7422,9 +7422,9 @@ class DoubleBufferedVideoController : public touchgfx::VideoController
     }
  8003012:	f890 0039 	ldrb.w	r0, [r0, #57]	; 0x39
  8003016:	bd08      	pop	{r3, pc}
- 8003018:	0802ca20 	.word	0x0802ca20
- 800301c:	0802ca34 	.word	0x0802ca34
- 8003020:	0802cbc1 	.word	0x0802cbc1
+ 8003018:	0802ca10 	.word	0x0802ca10
+ 800301c:	0802ca24 	.word	0x0802ca24
+ 8003020:	0802cbb1 	.word	0x0802cbb1
 
 08003024 <_ZN29DoubleBufferedVideoControllerILm1ELm480ELm272ELm960ELN8touchgfx6Bitmap12BitmapFormatE0EE19getVideoInformationEmPNS0_16VideoInformationE>:
     virtual void getVideoInformation(const Handle handle, touchgfx::VideoInformation* data)
@@ -7445,9 +7445,9 @@ class DoubleBufferedVideoController : public touchgfx::VideoController
         mjpegDecoders[handle]->getVideoInfo(data);
  8003040:	6b1b      	ldr	r3, [r3, #48]	; 0x30
  8003042:	4718      	bx	r3
- 8003044:	0802ca20 	.word	0x0802ca20
- 8003048:	0802cc03 	.word	0x0802cc03
- 800304c:	0802cbc1 	.word	0x0802cbc1
+ 8003044:	0802ca10 	.word	0x0802ca10
+ 8003048:	0802cbf3 	.word	0x0802cbf3
+ 800304c:	0802cbb1 	.word	0x0802cbb1
 
 08003050 <_ZN29DoubleBufferedVideoControllerILm1ELm480ELm272ELm960ELN8touchgfx6Bitmap12BitmapFormatE0EE21getCurrentFrameNumberEm>:
     virtual uint32_t getCurrentFrameNumber(const Handle handle)
@@ -7462,9 +7462,9 @@ class DoubleBufferedVideoController : public touchgfx::VideoController
     }
  8003060:	6900      	ldr	r0, [r0, #16]
  8003062:	bd08      	pop	{r3, pc}
- 8003064:	0802ca20 	.word	0x0802ca20
- 8003068:	0802cdb4 	.word	0x0802cdb4
- 800306c:	0802cbc1 	.word	0x0802cbc1
+ 8003064:	0802ca10 	.word	0x0802ca10
+ 8003068:	0802cda4 	.word	0x0802cda4
+ 800306c:	0802cbb1 	.word	0x0802cbb1
 
 08003070 <_ZN29DoubleBufferedVideoControllerILm1ELm480ELm272ELm960ELN8touchgfx6Bitmap12BitmapFormatE0EE12setFrameRateEmmm>:
     virtual void setFrameRate(const Handle handle, uint32_t ui_frames, uint32_t video_frames)
@@ -7485,9 +7485,9 @@ class DoubleBufferedVideoController : public touchgfx::VideoController
     }
  8003088:	bd08      	pop	{r3, pc}
  800308a:	bf00      	nop
- 800308c:	0802ca20 	.word	0x0802ca20
- 8003090:	0802cf6c 	.word	0x0802cf6c
- 8003094:	0802cbc1 	.word	0x0802cbc1
+ 800308c:	0802ca10 	.word	0x0802ca10
+ 8003090:	0802cf5c 	.word	0x0802cf5c
+ 8003094:	0802cbb1 	.word	0x0802cbb1
 
 08003098 <_ZN29DoubleBufferedVideoControllerILm1ELm480ELm272ELm960ELN8touchgfx6Bitmap12BitmapFormatE0EE10setCommandEmNS0_15VideoController7CommandEm>:
     virtual void setCommand(const Handle handle, Command cmd, uint32_t param)
@@ -7593,9 +7593,9 @@ class DoubleBufferedVideoController : public touchgfx::VideoController
     }
  8003138:	e7ee      	b.n	8003118 <_ZN29DoubleBufferedVideoControllerILm1ELm480ELm272ELm960ELN8touchgfx6Bitmap12BitmapFormatE0EE10setCommandEmNS0_15VideoController7CommandEm+0x80>
  800313a:	bf00      	nop
- 800313c:	0802ca20 	.word	0x0802ca20
- 8003140:	0802d12b 	.word	0x0802d12b
- 8003144:	0802cbc1 	.word	0x0802cbc1
+ 800313c:	0802ca10 	.word	0x0802ca10
+ 8003140:	0802d11b 	.word	0x0802d11b
+ 8003144:	0802cbb1 	.word	0x0802cbb1
 
 08003148 <_ZN29DoubleBufferedVideoControllerILm1ELm480ELm272ELm960ELN8touchgfx6Bitmap12BitmapFormatE0EE11updateFrameEmRNS0_11VideoWidgetE>:
     virtual bool updateFrame(const Handle handle, touchgfx::VideoWidget& widget)
@@ -7735,9 +7735,9 @@ class DoubleBufferedVideoController : public touchgfx::VideoController
  8003212:	2501      	movs	r5, #1
  8003214:	e7c9      	b.n	80031aa <_ZN29DoubleBufferedVideoControllerILm1ELm480ELm272ELm960ELN8touchgfx6Bitmap12BitmapFormatE0EE11updateFrameEmRNS0_11VideoWidgetE+0x62>
  8003216:	bf00      	nop
- 8003218:	0802ca20 	.word	0x0802ca20
- 800321c:	0802d302 	.word	0x0802d302
- 8003220:	0802cbc1 	.word	0x0802cbc1
+ 8003218:	0802ca10 	.word	0x0802ca10
+ 800321c:	0802d2f2 	.word	0x0802d2f2
+ 8003220:	0802cbb1 	.word	0x0802cbb1
  8003224:	20015fbc 	.word	0x20015fbc
 
 08003228 <_ZN20TouchGFXGeneratedHAL16enableInterruptsEv>:
@@ -7857,11 +7857,11 @@ class DoubleBufferedVideoController : public touchgfx::VideoController
     }
  80032d4:	4618      	mov	r0, r3
  80032d6:	bd38      	pop	{r3, r4, r5, pc}
- 80032d8:	0802d660 	.word	0x0802d660
- 80032dc:	0802d6a0 	.word	0x0802d6a0
- 80032e0:	0802d4a6 	.word	0x0802d4a6
- 80032e4:	0802d4d6 	.word	0x0802d4d6
- 80032e8:	0802cbc1 	.word	0x0802cbc1
+ 80032d8:	0802d650 	.word	0x0802d650
+ 80032dc:	0802d690 	.word	0x0802d690
+ 80032e0:	0802d496 	.word	0x0802d496
+ 80032e4:	0802d4c6 	.word	0x0802d4c6
+ 80032e8:	0802cbb1 	.word	0x0802cbb1
 
 080032ec <HAL_LTDC_LineEventCallback>:
 }
@@ -8218,7 +8218,7 @@ SoftwareMJPEGDecoder mjpegdecoder1((uint8_t*)lineBuffer);
  8003500:	20002388 	.word	0x20002388
  8003504:	20002b08 	.word	0x20002b08
  8003508:	20002b50 	.word	0x20002b50
- 800350c:	0802d850 	.word	0x0802d850
+ 800350c:	0802d840 	.word	0x0802d840
 
 08003510 <_ZN23ApplicationFontProviderD1Ev>:
     static const touchgfx::FontId ROBOTO_30 = 1; // Roboto_Bold_30_4bpp
@@ -8286,7 +8286,7 @@ const touchgfx::Bitmap::BitmapData* getInstance()
 }
  8003548:	4800      	ldr	r0, [pc, #0]	; (800354c <_ZN14BitmapDatabase11getInstanceEv+0x4>)
  800354a:	4770      	bx	lr
- 800354c:	0802d898 	.word	0x0802d898
+ 800354c:	0802d888 	.word	0x0802d888
 
 08003550 <_ZN14BitmapDatabase15getInstanceSizeEv>:
 
@@ -8851,12 +8851,12 @@ public:
  80037aa:	462b      	mov	r3, r5
  80037ac:	e7e1      	b.n	8003772 <_ZN23FrontendApplicationBase33gotoScreen2ScreenNoTransitionImplEv+0xf6>
  80037ae:	bf00      	nop
- 80037b0:	0802d9d4 	.word	0x0802d9d4
- 80037b4:	0802da62 	.word	0x0802da62
- 80037b8:	0802db66 	.word	0x0802db66
- 80037bc:	0802dbad 	.word	0x0802dbad
- 80037c0:	0802dc50 	.word	0x0802dc50
- 80037c4:	0802dd60 	.word	0x0802dd60
+ 80037b0:	0802d9c4 	.word	0x0802d9c4
+ 80037b4:	0802da52 	.word	0x0802da52
+ 80037b8:	0802db56 	.word	0x0802db56
+ 80037bc:	0802db9d 	.word	0x0802db9d
+ 80037c0:	0802dc40 	.word	0x0802dc40
+ 80037c4:	0802dd50 	.word	0x0802dd50
  80037c8:	20015ffc 	.word	0x20015ffc
  80037cc:	20015ff8 	.word	0x20015ff8
 
@@ -8910,9 +8910,9 @@ FrontendApplicationBase::FrontendApplicationBase(Model& m, FrontendHeap& heap)
  800381c:	4620      	mov	r0, r4
  800381e:	bdf8      	pop	{r3, r4, r5, r6, r7, pc}
  8003820:	20016008 	.word	0x20016008
- 8003824:	0802dd14 	.word	0x0802dd14
+ 8003824:	0802dd04 	.word	0x0802dd04
  8003828:	20015fbc 	.word	0x20015fbc
- 800382c:	0802dcfc 	.word	0x0802dcfc
+ 800382c:	0802dcec 	.word	0x0802dcec
 
 08003830 <_ZN23FrontendApplicationBase29gotoScreen2ScreenNoTransitionEv>:
 struct Callback<dest_type, void, void, void> : public GenericCallback<>
@@ -9072,7 +9072,7 @@ GeneratedFont::GeneratedFont(const GlyphNode* glyphs, uint16_t numGlyphs, uint16
  800390a:	b00b      	add	sp, #44	; 0x2c
  800390c:	bd30      	pop	{r4, r5, pc}
  800390e:	bf00      	nop
- 8003910:	0802dd84 	.word	0x0802dd84
+ 8003910:	0802dd74 	.word	0x0802dd74
 
 08003914 <_ZN8touchgfx6Screen11setupScreenEv>:
      *
@@ -9192,7 +9192,7 @@ public:
     }
  8003984:	4770      	bx	lr
  8003986:	bf00      	nop
- 8003988:	080305e8 	.word	0x080305e8
+ 8003988:	080305d8 	.word	0x080305d8
 
 0800398c <_ZN8touchgfx8TextArea8setWidthEs>:
     TextArea()
@@ -9418,11 +9418,11 @@ Screen2ViewBase::~Screen2ViewBase()
  8003a80:	4718      	bx	r3
  8003a82:	bf00      	nop
  8003a84:	2001600c 	.word	0x2001600c
- 8003a88:	0802dddc 	.word	0x0802dddc
- 8003a8c:	0802de1e 	.word	0x0802de1e
- 8003a90:	0802de59 	.word	0x0802de59
+ 8003a88:	0802ddcc 	.word	0x0802ddcc
+ 8003a8c:	0802de0e 	.word	0x0802de0e
+ 8003a90:	0802de49 	.word	0x0802de49
  8003a94:	20016010 	.word	0x20016010
- 8003a98:	0802dea0 	.word	0x0802dea0
+ 8003a98:	0802de90 	.word	0x0802de90
  8003a9c:	20016014 	.word	0x20016014
 
 08003aa0 <_ZN8touchgfx9ContainerC1Ev>:
@@ -9446,7 +9446,7 @@ public:
     {
     }
  8003abe:	4770      	bx	lr
- 8003ac0:	08030498 	.word	0x08030498
+ 8003ac0:	08030488 	.word	0x08030488
 
 08003ac4 <_ZN8touchgfx6WidgetC1Ev>:
  8003ac4:	2200      	movs	r2, #0
@@ -9461,7 +9461,7 @@ class Widget : public Drawable
  8003ade:	6002      	str	r2, [r0, #0]
  8003ae0:	4770      	bx	lr
  8003ae2:	bf00      	nop
- 8003ae4:	0802df20 	.word	0x0802df20
+ 8003ae4:	0802df10 	.word	0x0802df10
 
 08003ae8 <_ZN8touchgfx5ImageC1ERKNS_6BitmapE>:
      *
@@ -9496,7 +9496,7 @@ class Widget : public Drawable
  8003b12:	4620      	mov	r0, r4
  8003b14:	bd38      	pop	{r3, r4, r5, pc}
  8003b16:	bf00      	nop
- 8003b18:	08030650 	.word	0x08030650
+ 8003b18:	08030640 	.word	0x08030640
 
 08003b1c <_ZN8touchgfx8TextArea12BoundingAreaC1Ev>:
         : x(rectX), y(rectY), width(rectWidth), height(rectHeight)
@@ -9551,8 +9551,8 @@ class Widget : public Drawable
     }
  8003b6c:	4620      	mov	r0, r4
  8003b6e:	bd10      	pop	{r4, pc}
- 8003b70:	08030558 	.word	0x08030558
- 8003b74:	0802d9cc 	.word	0x0802d9cc
+ 8003b70:	08030548 	.word	0x08030548
+ 8003b74:	0802d9bc 	.word	0x0802d9bc
 
 08003b78 <_ZN8touchgfx23TextAreaWithOneWildcardC1Ev>:
     TextAreaWithOneWildcard()
@@ -9570,7 +9570,7 @@ class Widget : public Drawable
  8003b88:	64a3      	str	r3, [r4, #72]	; 0x48
     }
  8003b8a:	bd10      	pop	{r4, pc}
- 8003b8c:	0802df88 	.word	0x0802df88
+ 8003b8c:	0802df78 	.word	0x0802df78
 
 08003b90 <_ZN15Screen2ViewBaseC1Ev>:
 Screen2ViewBase::Screen2ViewBase()
@@ -9905,7 +9905,7 @@ Screen2ViewBase::Screen2ViewBase()
  8003f4a:	66a3      	str	r3, [r4, #104]	; 0x68
  8003f4c:	e002      	b.n	8003f54 <_ZN15Screen2ViewBaseC1Ev+0x3c4>
  8003f4e:	bf00      	nop
- 8003f50:	0802e018 	.word	0x0802e018
+ 8003f50:	0802e008 	.word	0x0802e008
         boundingArea = calculateBoundingArea();
  8003f54:	f10d 0ab8 	add.w	sl, sp, #184	; 0xb8
  8003f58:	f014 fb26 	bl	80185a8 <_ZN8touchgfx9Container3addERNS_8DrawableE>
@@ -9990,11 +9990,11 @@ Screen2ViewBase::Screen2ViewBase()
  8004000:	ff080808 	.word	0xff080808
  8004004:	fffaf5f5 	.word	0xfffaf5f5
  8004008:	2001600c 	.word	0x2001600c
- 800400c:	0802dddc 	.word	0x0802dddc
- 8004010:	0802dede 	.word	0x0802dede
- 8004014:	0802de59 	.word	0x0802de59
+ 800400c:	0802ddcc 	.word	0x0802ddcc
+ 8004010:	0802dece 	.word	0x0802dece
+ 8004014:	0802de49 	.word	0x0802de49
  8004018:	20016010 	.word	0x20016010
- 800401c:	0802dea0 	.word	0x0802dea0
+ 800401c:	0802de90 	.word	0x0802de90
         return texts->getText(typedTextId);
  8004020:	4bdb      	ldr	r3, [pc, #876]	; (8004390 <_ZN15Screen2ViewBaseC1Ev+0x800>)
  8004022:	2122      	movs	r1, #34	; 0x22
@@ -10382,13 +10382,13 @@ Screen2ViewBase::Screen2ViewBase()
  800438a:	f7ff fac8 	bl	800391e <_ZN8touchgfx8Drawable5setXYEss>
  800438e:	e00f      	b.n	80043b0 <_ZN15Screen2ViewBaseC1Ev+0x820>
  8004390:	20016018 	.word	0x20016018
- 8004394:	0802f948 	.word	0x0802f948
+ 8004394:	0802f938 	.word	0x0802f938
  8004398:	fffaf7f7 	.word	0xfffaf7f7
  800439c:	fffafafa 	.word	0xfffafafa
  80043a0:	fffffcfc 	.word	0xfffffcfc
  80043a4:	2001600c 	.word	0x2001600c
  80043a8:	20016010 	.word	0x20016010
- 80043ac:	0802d9cc 	.word	0x0802d9cc
+ 80043ac:	0802d9bc 	.word	0x0802d9bc
     img_tsac.setBitmap(touchgfx::Bitmap(BITMAP_DRIVE_1_ID));
  80043b0:	4629      	mov	r1, r5
  80043b2:	981e      	ldr	r0, [sp, #120]	; 0x78
@@ -10833,7 +10833,7 @@ Screen2ViewBase::Screen2ViewBase()
  80047ac:	2001600c 	.word	0x2001600c
  80047b0:	20016010 	.word	0x20016010
  80047b4:	20016018 	.word	0x20016018
- 80047b8:	0802f948 	.word	0x0802f948
+ 80047b8:	0802f938 	.word	0x0802f938
  80047bc:	fffcfafa 	.word	0xfffcfafa
  80047c0:	fffffcfc 	.word	0xfffffcfc
  80047c4:	f015 fd61 	bl	801a28a <_ZN8touchgfx5Image9setBitmapERKNS_6BitmapE>
@@ -11241,9 +11241,9 @@ Screen2ViewBase::Screen2ViewBase()
  8004b70:	fffffcfc 	.word	0xfffffcfc
  8004b74:	20016010 	.word	0x20016010
  8004b78:	20016018 	.word	0x20016018
- 8004b7c:	0802f948 	.word	0x0802f948
+ 8004b7c:	0802f938 	.word	0x0802f938
  8004b80:	fffaf7f7 	.word	0xfffaf7f7
- 8004b84:	0802d9cc 	.word	0x0802d9cc
+ 8004b84:	0802d9bc 	.word	0x0802d9bc
  8004b88:	2001600c 	.word	0x2001600c
  8004b8c:	f8ad a0cc 	strh.w	sl, [sp, #204]	; 0xcc
  8004b90:	f015 fb7b 	bl	801a28a <_ZN8touchgfx5Image9setBitmapERKNS_6BitmapE>
@@ -11586,8 +11586,8 @@ Screen2ViewBase::Screen2ViewBase()
  8004e72:	bf00      	nop
  8004e74:	fffafafa 	.word	0xfffafafa
  8004e78:	20016010 	.word	0x20016010
- 8004e7c:	0802f948 	.word	0x0802f948
- 8004e80:	0802d9cc 	.word	0x0802d9cc
+ 8004e7c:	0802f938 	.word	0x0802f938
+ 8004e80:	0802d9bc 	.word	0x0802d9bc
  8004e84:	fffaf5f5 	.word	0xfffaf5f5
  8004e88:	fffffcfc 	.word	0xfffffcfc
 
@@ -11647,9 +11647,9 @@ touchgfx::GeneratedFont& getFont_Roboto_Bold_16_4bpp()
  8004eea:	bd30      	pop	{r4, r5, pc}
  8004eec:	20002ba8 	.word	0x20002ba8
  8004ef0:	900df604 	.word	0x900df604
- 8004ef4:	08030b30 	.word	0x08030b30
+ 8004ef4:	08030b20 	.word	0x08030b20
  8004ef8:	20002bac 	.word	0x20002bac
- 8004efc:	08030b68 	.word	0x08030b68
+ 8004efc:	08030b58 	.word	0x08030b58
  8004f00:	08004e8d 	.word	0x08004e8d
 
 08004f04 <__tcf_0>:
@@ -11707,9 +11707,9 @@ touchgfx::GeneratedFont& getFont_Roboto_Bold_30_4bpp()
  8004f62:	bd30      	pop	{r4, r5, pc}
  8004f64:	20002bd8 	.word	0x20002bd8
  8004f68:	900df72c 	.word	0x900df72c
- 8004f6c:	08030b60 	.word	0x08030b60
+ 8004f6c:	08030b50 	.word	0x08030b50
  8004f70:	20002bdc 	.word	0x20002bdc
- 8004f74:	08030b6c 	.word	0x08030b6c
+ 8004f74:	08030b5c 	.word	0x08030b5c
  8004f78:	08004f05 	.word	0x08004f05
 
 08004f7c <__tcf_0>:
@@ -11769,9 +11769,9 @@ touchgfx::GeneratedFont& getFont_verdana_48_4bpp()
  8004fde:	bf00      	nop
  8004fe0:	20002c08 	.word	0x20002c08
  8004fe4:	900df7e4 	.word	0x900df7e4
- 8004fe8:	08030b64 	.word	0x08030b64
+ 8004fe8:	08030b54 	.word	0x08030b54
  8004fec:	20002c0c 	.word	0x20002c0c
- 8004ff0:	08030b70 	.word	0x08030b70
+ 8004ff0:	08030b60 	.word	0x08030b60
  8004ff4:	08004f7d 	.word	0x08004f7d
 
 08004ff8 <_ZNK8touchgfx4Font12getGSUBTableEv>:
@@ -11933,11 +11933,11 @@ touchgfx::Unicode::UnicodeChar touchgfx::TextProvider::getNextLigature(TextDirec
  80050a0:	e8bd 4010 	ldmia.w	sp!, {r4, lr}
     return getNextChar();
  80050a4:	f018 bee6 	b.w	801de74 <_ZN8touchgfx12TextProvider11getNextCharEv>
- 80050a8:	0802e044 	.word	0x0802e044
- 80050ac:	0802e04d 	.word	0x0802e04d
- 80050b0:	0802e0f8 	.word	0x0802e0f8
- 80050b4:	0802e142 	.word	0x0802e142
- 80050b8:	0802e150 	.word	0x0802e150
+ 80050a8:	0802e034 	.word	0x0802e034
+ 80050ac:	0802e03d 	.word	0x0802e03d
+ 80050b0:	0802e0e8 	.word	0x0802e0e8
+ 80050b4:	0802e132 	.word	0x0802e132
+ 80050b8:	0802e140 	.word	0x0802e140
 
 080050bc <_ZN8touchgfx12TextProvider18initializeInternalEv>:
 
@@ -12179,7 +12179,7 @@ FrontendApplication::FrontendApplication(Model& m, FrontendHeap& heap)
  80051d4:	6023      	str	r3, [r4, #0]
 }
  80051d6:	bd10      	pop	{r4, pc}
- 80051d8:	0802e22c 	.word	0x0802e22c
+ 80051d8:	0802e21c 	.word	0x0802e21c
 
 080051dc <_ZN5ModelC1Ev>:
 #include "queue.h"	//dodane
@@ -12546,7 +12546,7 @@ Screen2Presenter::Screen2Presenter(Screen2View& v)
 }
  8005370:	bd10      	pop	{r4, pc}
  8005372:	bf00      	nop
- 8005374:	0802e270 	.word	0x0802e270
+ 8005374:	0802e260 	.word	0x0802e260
 
 08005378 <_ZN11Screen2View14tearDownScreenEv>:
 }
@@ -12572,7 +12572,7 @@ public:
  8005384:	f7fe fb40 	bl	8003a08 <_ZN15Screen2ViewBaseD1Ev>
  8005388:	4620      	mov	r0, r4
  800538a:	bd10      	pop	{r4, pc}
- 800538c:	0802e3a8 	.word	0x0802e3a8
+ 800538c:	0802e398 	.word	0x0802e398
 
 08005390 <_ZN11Screen2ViewD0Ev>:
  8005390:	b510      	push	{r4, lr}
@@ -12609,9 +12609,9 @@ public:
         setX((parent->getWidth() - getWidth()) / 2);
  80053d2:	f341 014f 	sbfx	r1, r1, #1, #16
  80053d6:	4718      	bx	r3
- 80053d8:	0802e300 	.word	0x0802e300
- 80053dc:	0802e334 	.word	0x0802e334
- 80053e0:	0802e357 	.word	0x0802e357
+ 80053d8:	0802e2f0 	.word	0x0802e2f0
+ 80053dc:	0802e324 	.word	0x0802e324
+ 80053e0:	0802e347 	.word	0x0802e347
 
 080053e4 <_ZN11Screen2ViewC1Ev>:
 Screen2View::Screen2View()
@@ -12625,7 +12625,7 @@ Screen2View::Screen2View()
  80053f0:	6023      	str	r3, [r4, #0]
 }
  80053f2:	bd10      	pop	{r4, pc}
- 80053f4:	0802e3a8 	.word	0x0802e3a8
+ 80053f4:	0802e398 	.word	0x0802e398
 
 080053f8 <_ZN11Screen2View11setupScreenEv>:
     Screen2ViewBase::setupScreen();
@@ -12660,7 +12660,7 @@ void Screen2View::speed_update_value(uint32_t value)
  8005424:	e8bd 4010 	ldmia.w	sp!, {r4, lr}
 	c_speed.invalidate();
  8005428:	f017 bc9f 	b.w	801cd6a <_ZNK8touchgfx8Drawable10invalidateEv>
- 800542c:	0802f6a6 	.word	0x0802f6a6
+ 800542c:	0802f696 	.word	0x0802f696
 
 08005430 <_ZN11Screen2View17leng_update_valueEm>:
 		img_tsac.invalidate();
@@ -12691,7 +12691,7 @@ void Screen2View::leng_update_value(uint32_t value)
  8005458:	e8bd 4010 	ldmia.w	sp!, {r4, lr}
 	c_leng.invalidate();
  800545c:	f017 bc85 	b.w	801cd6a <_ZNK8touchgfx8Drawable10invalidateEv>
- 8005460:	0802f6a6 	.word	0x0802f6a6
+ 8005460:	0802f696 	.word	0x0802f696
 
 08005464 <_ZN11Screen2View17linv_update_valueEm>:
 
@@ -12719,7 +12719,7 @@ void Screen2View::linv_update_value(uint32_t value)
  800548c:	e8bd 4010 	ldmia.w	sp!, {r4, lr}
 	c_linv.invalidate();
  8005490:	f017 bc6b 	b.w	801cd6a <_ZNK8touchgfx8Drawable10invalidateEv>
- 8005494:	0802f6a6 	.word	0x0802f6a6
+ 8005494:	0802f696 	.word	0x0802f696
 
 08005498 <_ZN11Screen2View16bat_update_valueEm>:
 
@@ -12747,7 +12747,7 @@ void Screen2View::bat_update_value(uint32_t value)
  80054c0:	e8bd 4010 	ldmia.w	sp!, {r4, lr}
 	c_bat.invalidate();
  80054c4:	f017 bc51 	b.w	801cd6a <_ZNK8touchgfx8Drawable10invalidateEv>
- 80054c8:	0802f6a6 	.word	0x0802f6a6
+ 80054c8:	0802f696 	.word	0x0802f696
 
 080054cc <_ZN11Screen2View17rinv_update_valueEm>:
 
@@ -12775,7 +12775,7 @@ void Screen2View::rinv_update_value(uint32_t value)
  80054f4:	e8bd 4010 	ldmia.w	sp!, {r4, lr}
 	c_rinv.invalidate();
  80054f8:	f017 bc37 	b.w	801cd6a <_ZNK8touchgfx8Drawable10invalidateEv>
- 80054fc:	0802f6a6 	.word	0x0802f6a6
+ 80054fc:	0802f696 	.word	0x0802f696
 
 08005500 <_ZN11Screen2View17reng_update_valueEm>:
 
@@ -12803,7 +12803,7 @@ void Screen2View::reng_update_value(uint32_t value)
  8005528:	e8bd 4010 	ldmia.w	sp!, {r4, lr}
 	c_reng.invalidate();
  800552c:	f017 bc1d 	b.w	801cd6a <_ZNK8touchgfx8Drawable10invalidateEv>
- 8005530:	0802f6a6 	.word	0x0802f6a6
+ 8005530:	0802f696 	.word	0x0802f696
 
 08005534 <_ZN11Screen2View16err_update_valueEm>:
 
@@ -12831,7 +12831,7 @@ void Screen2View::err_update_value(uint32_t value)
  800555c:	e8bd 4010 	ldmia.w	sp!, {r4, lr}
 	c_err.invalidate();
  8005560:	f017 bc03 	b.w	801cd6a <_ZNK8touchgfx8Drawable10invalidateEv>
- 8005564:	0802f6a6 	.word	0x0802f6a6
+ 8005564:	0802f696 	.word	0x0802f696
 
 08005568 <_ZN11Screen2View15hv_update_valueEm>:
 
@@ -12859,7 +12859,7 @@ void Screen2View::hv_update_value(uint32_t value)
  8005590:	e8bd 4010 	ldmia.w	sp!, {r4, lr}
 	c_hv.invalidate();
  8005594:	f017 bbe9 	b.w	801cd6a <_ZNK8touchgfx8Drawable10invalidateEv>
- 8005598:	0802f6a6 	.word	0x0802f6a6
+ 8005598:	0802f696 	.word	0x0802f696
 
 0800559c <_ZN11Screen2View16low_update_valueEm>:
 
@@ -12887,7 +12887,7 @@ void Screen2View::low_update_value(uint32_t value)
  80055c4:	e8bd 4010 	ldmia.w	sp!, {r4, lr}
 	c_low.invalidate();
  80055c8:	f017 bbcf 	b.w	801cd6a <_ZNK8touchgfx8Drawable10invalidateEv>
- 80055cc:	0802f6a6 	.word	0x0802f6a6
+ 80055cc:	0802f696 	.word	0x0802f696
 
 080055d0 <_ZN11Screen2View16map_update_valueEm>:
 {
@@ -12935,7 +12935,7 @@ void Screen2View::low_update_value(uint32_t value)
  800561c:	e8bd 4030 	ldmia.w	sp!, {r4, r5, lr}
 		img_map.invalidate();
  8005620:	f017 bba3 	b.w	801cd6a <_ZNK8touchgfx8Drawable10invalidateEv>
- 8005624:	0802f6a6 	.word	0x0802f6a6
+ 8005624:	0802f696 	.word	0x0802f696
 
 08005628 <_ZN11Screen2View15tc_update_valueEm>:
 {
@@ -12983,7 +12983,7 @@ void Screen2View::low_update_value(uint32_t value)
  8005674:	e8bd 4030 	ldmia.w	sp!, {r4, r5, lr}
 		img_tc.invalidate();
  8005678:	f017 bb77 	b.w	801cd6a <_ZNK8touchgfx8Drawable10invalidateEv>
- 800567c:	0802f6a6 	.word	0x0802f6a6
+ 800567c:	0802f696 	.word	0x0802f696
 
 08005680 <_ZN11Screen2View17diff_update_valueEm>:
 {
@@ -13031,7 +13031,7 @@ void Screen2View::low_update_value(uint32_t value)
  80056cc:	e8bd 4030 	ldmia.w	sp!, {r4, r5, lr}
 		img_diff.invalidate();
  80056d0:	f017 bb4b 	b.w	801cd6a <_ZNK8touchgfx8Drawable10invalidateEv>
- 80056d4:	0802f6a6 	.word	0x0802f6a6
+ 80056d4:	0802f696 	.word	0x0802f696
 
 080056d8 <_ZN11Screen2View17tsac_update_valueEm>:
 {
@@ -13079,7 +13079,7 @@ void Screen2View::low_update_value(uint32_t value)
  8005724:	e8bd 4030 	ldmia.w	sp!, {r4, r5, lr}
 		img_tsac.invalidate();
  8005728:	f017 bb1f 	b.w	801cd6a <_ZNK8touchgfx8Drawable10invalidateEv>
- 800572c:	0802f6a6 	.word	0x0802f6a6
+ 800572c:	0802f696 	.word	0x0802f696
 
 08005730 <QSPI_AutoPollingMemReady.constprop.0>:
   * @brief  This function read the SR of the memory and wait the EOP.
@@ -20391,7 +20391,7 @@ HAL_StatusTypeDef HAL_RCC_OscConfig(RCC_OscInitTypeDef  *RCC_OscInitStruct)
  800820a:	bf00      	nop
  800820c:	40023c00 	.word	0x40023c00
  8008210:	40023800 	.word	0x40023800
- 8008214:	0802e3d4 	.word	0x0802e3d4
+ 8008214:	0802e3c4 	.word	0x0802e3c4
  8008218:	2000000c 	.word	0x2000000c
  800821c:	2000003c 	.word	0x2000003c
 
@@ -20413,7 +20413,7 @@ uint32_t HAL_RCC_GetPCLK1Freq(void)
  8008230:	40d8      	lsrs	r0, r3
  8008232:	4770      	bx	lr
  8008234:	40023800 	.word	0x40023800
- 8008238:	0802e3e4 	.word	0x0802e3e4
+ 8008238:	0802e3d4 	.word	0x0802e3d4
  800823c:	2000000c 	.word	0x2000000c
 
 08008240 <HAL_RCC_GetClockConfig>:
@@ -26517,9 +26517,9 @@ static void prvInitialiseNewTask( 	TaskFunction_t pxTaskCode,
 		pxNewTCB->pcTaskName[ 0 ] = 0x00;
  800a646:	f884 5034 	strb.w	r5, [r4, #52]	; 0x34
  800a64a:	e7c7      	b.n	800a5dc <prvInitialiseNewTask.constprop.0+0x48>
- 800a64c:	08030ab4 	.word	0x08030ab4
- 800a650:	08030ad4 	.word	0x08030ad4
- 800a654:	08030a94 	.word	0x08030a94
+ 800a64c:	08030aa4 	.word	0x08030aa4
+ 800a650:	08030ac4 	.word	0x08030ac4
+ 800a654:	08030a84 	.word	0x08030a84
 
 0800a658 <xTaskCreateStatic>:
 	{
@@ -27084,7 +27084,7 @@ BaseType_t xAlreadyYielded = pdFALSE;
 }
  800aa7c:	b008      	add	sp, #32
  800aa7e:	bd10      	pop	{r4, pc}
- 800aa80:	0802e3ec 	.word	0x0802e3ec
+ 800aa80:	0802e3dc 	.word	0x0802e3dc
  800aa84:	0800a531 	.word	0x0800a531
  800aa88:	20015988 	.word	0x20015988
  800aa8c:	200000bc 	.word	0x200000bc
@@ -27774,7 +27774,7 @@ static void prvCheckForValidListAndQueue( void )
  800af30:	20015e8c 	.word	0x20015e8c
  800af34:	20015e88 	.word	0x20015e88
  800af38:	20015f58 	.word	0x20015f58
- 800af3c:	0802e3f1 	.word	0x0802e3f1
+ 800af3c:	0802e3e1 	.word	0x0802e3e1
 
 0800af40 <prvInsertTimerInActiveList>:
 	if( xNextExpiryTime <= xTimeNow )
@@ -27868,7 +27868,7 @@ BaseType_t xProcessTimerNow = pdFALSE;
  800afd0:	b008      	add	sp, #32
  800afd2:	bd10      	pop	{r4, pc}
  800afd4:	20015fa8 	.word	0x20015fa8
- 800afd8:	0802e3f6 	.word	0x0802e3f6
+ 800afd8:	0802e3e6 	.word	0x0802e3e6
  800afdc:	0800b0ed 	.word	0x0800b0ed
  800afe0:	20015fac 	.word	0x20015fac
 
@@ -29359,7 +29359,7 @@ arith_decode (j_decompress_ptr cinfo, unsigned char *st)
  800b87a:	7033      	strb	r3, [r6, #0]
  800b87c:	e7bf      	b.n	800b7fe <arith_decode+0x56>
  800b87e:	bf00      	nop
- 800b880:	0802e400 	.word	0x0802e400
+ 800b880:	0802e3f0 	.word	0x0802e3f0
 
 0800b884 <start_pass>:
  * Initialize for an arithmetic-compressed scan.
@@ -30757,7 +30757,7 @@ init_mem_source (j_decompress_ptr cinfo)
  800c228:	605a      	str	r2, [r3, #4]
 }
  800c22a:	bd10      	pop	{r4, pc}
- 800c22c:	0802e5c8 	.word	0x0802e5c8
+ 800c22c:	0802e5b8 	.word	0x0802e5b8
 
 0800c230 <skip_input_data>:
  * buffer is the application writer's problem.
@@ -33729,7 +33729,7 @@ start_pass (j_decompress_ptr cinfo)
  800d444:	08015175 	.word	0x08015175
  800d448:	08013041 	.word	0x08013041
  800d44c:	08013d15 	.word	0x08013d15
- 800d450:	0802e5cc 	.word	0x0802e5cc
+ 800d450:	0802e5bc 	.word	0x0802e5bc
  800d454:	08015bf9 	.word	0x08015bf9
  800d458:	080123c9 	.word	0x080123c9
  800d45c:	080167cd 	.word	0x080167cd
@@ -33753,8 +33753,8 @@ start_pass (j_decompress_ptr cinfo)
  800d4a4:	08014b29 	.word	0x08014b29
  800d4a8:	080146e1 	.word	0x080146e1
  800d4ac:	080141a9 	.word	0x080141a9
- 800d4b0:	0802e618 	.word	0x0802e618
- 800d4b4:	0802e5d8 	.word	0x0802e5d8
+ 800d4b0:	0802e608 	.word	0x0802e608
+ 800d4b4:	0802e5c8 	.word	0x0802e5c8
 
 0800d4b8 <jinit_inverse_dct>:
  * Initialize IDCT manager.
@@ -34066,7 +34066,7 @@ jpeg_huff_decode (bitread_working_state * state,
  800d652:	4410      	add	r0, r2
  800d654:	7c40      	ldrb	r0, [r0, #17]
  800d656:	e7c5      	b.n	800d5e4 <jpeg_huff_decode+0x1c>
- 800d658:	0802e698 	.word	0x0802e698
+ 800d658:	0802e688 	.word	0x0802e688
 
 0800d65c <process_restart>:
  * Returns FALSE if must suspend.
@@ -34359,7 +34359,7 @@ decode_mcu_DC_first (j_decompress_ptr cinfo, JBLOCKROW *MCU_data)
  800d812:	2309      	movs	r3, #9
  800d814:	e7ef      	b.n	800d7f6 <decode_mcu_DC_first+0x14e>
  800d816:	bf00      	nop
- 800d818:	0802e698 	.word	0x0802e698
+ 800d818:	0802e688 	.word	0x0802e688
 
 0800d81c <decode_mcu_AC_first>:
   JBLOCKROW block;
@@ -34573,7 +34573,7 @@ decode_mcu_DC_first (j_decompress_ptr cinfo, JBLOCKROW *MCU_data)
  800d970:	6058      	str	r0, [r3, #4]
  800d972:	e9c5 1202 	strd	r1, r2, [r5, #8]
  800d976:	e770      	b.n	800d85a <decode_mcu_AC_first+0x3e>
- 800d978:	0802e698 	.word	0x0802e698
+ 800d978:	0802e688 	.word	0x0802e688
 
 0800d97c <decode_mcu_DC_refine>:
  * is not very clear on the point.
@@ -35054,7 +35054,7 @@ decode_mcu_DC_refine (j_decompress_ptr cinfo, JBLOCKROW *MCU_data)
       for (; k <= Se; k++) {
  800dc90:	3701      	adds	r7, #1
  800dc92:	e7c1      	b.n	800dc18 <decode_mcu_AC_refine+0x208>
- 800dc94:	0802e698 	.word	0x0802e698
+ 800dc94:	0802e688 	.word	0x0802e688
 
 0800dc98 <decode_mcu_sub>:
  * partial blocks.
@@ -35451,7 +35451,7 @@ decode_mcu_sub (j_decompress_ptr cinfo, JBLOCKROW *MCU_data)
  800df7e:	340f      	adds	r4, #15
  800df80:	e7e8      	b.n	800df54 <decode_mcu_sub+0x2bc>
  800df82:	bf00      	nop
- 800df84:	0802e698 	.word	0x0802e698
+ 800df84:	0802e688 	.word	0x0802e688
 
 0800df88 <decode_mcu>:
  * full-size blocks.
@@ -35840,8 +35840,8 @@ decode_mcu (j_decompress_ptr cinfo, JBLOCKROW *MCU_data)
 	  k += 15;
  800e260:	340f      	adds	r4, #15
  800e262:	e7e8      	b.n	800e236 <decode_mcu+0x2ae>
- 800e264:	0802ff70 	.word	0x0802ff70
- 800e268:	0802e698 	.word	0x0802e698
+ 800e264:	0802ff60 	.word	0x0802ff60
+ 800e268:	0802e688 	.word	0x0802e688
 
 0800e26c <jpeg_make_d_derived_tbl>:
 {
@@ -36621,13 +36621,13 @@ start_pass_huff_decoder (j_decompress_ptr cinfo)
  800e7c0:	0800da11 	.word	0x0800da11
  800e7c4:	0800dc99 	.word	0x0800dc99
  800e7c8:	0800df89 	.word	0x0800df89
- 800e7cc:	0802e84c 	.word	0x0802e84c
- 800e7d0:	0802e6d8 	.word	0x0802e6d8
- 800e7d4:	0802e7d8 	.word	0x0802e7d8
- 800e7d8:	0802e7e8 	.word	0x0802e7e8
- 800e7dc:	0802e80c 	.word	0x0802e80c
- 800e7e0:	0802e8b0 	.word	0x0802e8b0
- 800e7e4:	0802e940 	.word	0x0802e940
+ 800e7cc:	0802e83c 	.word	0x0802e83c
+ 800e7d0:	0802e6c8 	.word	0x0802e6c8
+ 800e7d4:	0802e7c8 	.word	0x0802e7c8
+ 800e7d8:	0802e7d8 	.word	0x0802e7d8
+ 800e7dc:	0802e7fc 	.word	0x0802e7fc
+ 800e7e0:	0802e8a0 	.word	0x0802e8a0
+ 800e7e4:	0802e930 	.word	0x0802e930
 
 0800e7e8 <jinit_huff_decoder>:
  * Module initialization routine for Huffman entropy decoding.
@@ -37385,13 +37385,13 @@ reset_input_controller (j_decompress_ptr cinfo)
        ci++, compptr++) {
  800ecee:	f108 0858 	add.w	r8, r8, #88	; 0x58
  800ecf2:	e783      	b.n	800ebfc <consume_markers+0x1dc>
- 800ecf4:	0802ff70 	.word	0x0802ff70
- 800ecf8:	08030164 	.word	0x08030164
- 800ecfc:	08030288 	.word	0x08030288
- 800ed00:	080300b0 	.word	0x080300b0
- 800ed04:	08030100 	.word	0x08030100
- 800ed08:	080301e4 	.word	0x080301e4
- 800ed0c:	08030358 	.word	0x08030358
+ 800ecf4:	0802ff60 	.word	0x0802ff60
+ 800ecf8:	08030154 	.word	0x08030154
+ 800ecfc:	08030278 	.word	0x08030278
+ 800ed00:	080300a0 	.word	0x080300a0
+ 800ed04:	080300f0 	.word	0x080300f0
+ 800ed08:	080301d4 	.word	0x080301d4
+ 800ed0c:	08030348 	.word	0x08030348
     cinfo->inputctl->has_multiple_scans = FALSE;
  800ed10:	611a      	str	r2, [r3, #16]
  800ed12:	e78d      	b.n	800ec30 <consume_markers+0x210>
@@ -40833,13 +40833,13 @@ reset_marker_reader (j_decompress_ptr cinfo)
  8010466:	2146      	movs	r1, #70	; 0x46
  8010468:	e4df      	b.n	800fe2a <read_markers+0x1ca>
  801046a:	bf00      	nop
- 801046c:	080300b0 	.word	0x080300b0
- 8010470:	0802ff70 	.word	0x0802ff70
- 8010474:	08030358 	.word	0x08030358
- 8010478:	080301e4 	.word	0x080301e4
- 801047c:	08030100 	.word	0x08030100
- 8010480:	08030164 	.word	0x08030164
- 8010484:	08030288 	.word	0x08030288
+ 801046c:	080300a0 	.word	0x080300a0
+ 8010470:	0802ff60 	.word	0x0802ff60
+ 8010474:	08030348 	.word	0x08030348
+ 8010478:	080301d4 	.word	0x080301d4
+ 801047c:	080300f0 	.word	0x080300f0
+ 8010480:	08030154 	.word	0x08030154
+ 8010484:	08030278 	.word	0x08030278
 
 08010488 <jpeg_resync_to_restart>:
 {
@@ -43781,7 +43781,7 @@ jpeg_std_error (struct jpeg_error_mgr * err)
 }
  801150e:	4770      	bx	lr
  8011510:	080114cf 	.word	0x080114cf
- 8011514:	0802fc54 	.word	0x0802fc54
+ 8011514:	0802fc44 	.word	0x0802fc44
  8011518:	08011413 	.word	0x08011413
  801151c:	08011401 	.word	0x08011401
  8011520:	0801144d 	.word	0x0801144d
@@ -58008,8 +58008,8 @@ do_barray_io (j_common_ptr cinfo, jvirt_barray_ptr ptr, boolean writing)
       prev_hdr_ptr->hdr.next = hdr_ptr;
  8016a2e:	f8ca 0000 	str.w	r0, [sl]
  8016a32:	e7f2      	b.n	8016a1a <alloc_small+0xaa>
- 8016a34:	0802fe5c 	.word	0x0802fe5c
- 8016a38:	0802fe54 	.word	0x0802fe54
+ 8016a34:	0802fe4c 	.word	0x0802fe4c
+ 8016a38:	0802fe44 	.word	0x0802fe44
 
 08016a3c <request_virt_barray>:
   if (pool_id != JPOOL_IMAGE)
@@ -59945,7 +59945,7 @@ new_color_map_1_quant (j_decompress_ptr cinfo)
  8017524:	08017315 	.word	0x08017315
  8017528:	0801766d 	.word	0x0801766d
  801752c:	08017535 	.word	0x08017535
- 8017530:	0802fe70 	.word	0x0802fe70
+ 8017530:	0802fe60 	.word	0x0802fe60
 
 08017534 <quantize_fs_dither>:
 {
@@ -60540,7 +60540,7 @@ jinit_1pass_quantizer (j_decompress_ptr cinfo)
  80178cc:	080173fd 	.word	0x080173fd
  80178d0:	080173f1 	.word	0x080173f1
  80178d4:	080173f3 	.word	0x080173f3
- 80178d8:	0802fe64 	.word	0x0802fe64
+ 80178d8:	0802fe54 	.word	0x0802fe54
 
 080178dc <prescan_quantize>:
 		  JSAMPARRAY output_buf, int num_rows)
@@ -62682,7 +62682,7 @@ jcopy_block_row (JBLOCKROW input_row, JBLOCKROW output_row,
  8018586:	8082      	strh	r2, [r0, #4]
  8018588:	4770      	bx	lr
  801858a:	bf00      	nop
- 801858c:	08030464 	.word	0x08030464
+ 801858c:	08030454 	.word	0x08030454
 
 08018590 <_ZN8touchgfx9Container13getFirstChildEv>:
  8018590:	6a80      	ldr	r0, [r0, #40]	; 0x28
@@ -64165,7 +64165,7 @@ jcopy_block_row (JBLOCKROW input_row, JBLOCKROW output_row,
  801937a:	2304      	movs	r3, #4
  801937c:	e7b2      	b.n	80192e4 <_ZN8touchgfx3HAL8blitCopyEPKtPKhttttthbtNS_6Bitmap12BitmapFormatES6_b+0x28>
  801937e:	bf00      	nop
- 8019380:	08030520 	.word	0x08030520
+ 8019380:	08030510 	.word	0x08030510
 
 08019384 <_ZN8touchgfx3HAL8blitFillENS_9colortypeEtttthtNS_6Bitmap12BitmapFormatEb>:
  8019384:	e92d 4ff0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
@@ -64215,7 +64215,7 @@ jcopy_block_row (JBLOCKROW input_row, JBLOCKROW output_row,
  8019408:	4798      	blx	r3
  801940a:	b00b      	add	sp, #44	; 0x2c
  801940c:	e8bd 8ff0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, pc}
- 8019410:	08030520 	.word	0x08030520
+ 8019410:	08030510 	.word	0x08030510
 
 08019414 <_ZNK8touchgfx3HAL13getDstAddressEttPt>:
  8019414:	e92d 41f0 	stmdb	sp!, {r4, r5, r6, r7, r8, lr}
@@ -64238,7 +64238,7 @@ jcopy_block_row (JBLOCKROW input_row, JBLOCKROW output_row,
  801943c:	fb04 6000 	mla	r0, r4, r0, r6
  8019440:	e8bd 81f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, pc}
  8019444:	20015fb6 	.word	0x20015fb6
- 8019448:	08030520 	.word	0x08030520
+ 8019448:	08030510 	.word	0x08030510
 
 0801944c <_ZN8touchgfx3HAL13blitCopyGlyphEPKhtttttNS_9colortypeEhNS_14BlitOperationsEb>:
  801944c:	b5f0      	push	{r4, r5, r6, r7, lr}
@@ -64761,7 +64761,7 @@ jcopy_block_row (JBLOCKROW input_row, JBLOCKROW output_row,
  80198d8:	e9c0 4100 	strd	r4, r1, [r0]
  80198dc:	bd10      	pop	{r4, pc}
  80198de:	bf00      	nop
- 80198e0:	08030534 	.word	0x08030534
+ 80198e0:	08030524 	.word	0x08030524
 
 080198e4 <_ZN8touchgfx13DMA_Interface15isDmaQueueEmptyEv>:
  80198e4:	6840      	ldr	r0, [r0, #4]
@@ -68651,7 +68651,7 @@ jcopy_block_row (JBLOCKROW input_row, JBLOCKROW output_row,
  801bedc:	f001 fa24 	bl	801d328 <_ZN8touchgfx6Screen4drawEv>
  801bee0:	e7ec      	b.n	801bebc <_ZN8touchgfx11ApplicationC1Ev+0x50>
  801bee2:	bf00      	nop
- 801bee4:	080306bc 	.word	0x080306bc
+ 801bee4:	080306ac 	.word	0x080306ac
  801bee8:	20015ff8 	.word	0x20015ff8
  801beec:	b5e8b5cd 	.word	0xb5e8b5cd
  801bef0:	f407a5c2 	.word	0xf407a5c2
@@ -70256,7 +70256,7 @@ jcopy_block_row (JBLOCKROW input_row, JBLOCKROW output_row,
  801cf0a:	4b01      	ldr	r3, [pc, #4]	; (801cf10 <_ZN8touchgfx9ConstFontC1EPKNS_9GlyphNodeEttthhhhhhtt+0x4c>)
  801cf0c:	6003      	str	r3, [r0, #0]
  801cf0e:	bd30      	pop	{r4, r5, pc}
- 801cf10:	08030708 	.word	0x08030708
+ 801cf10:	080306f8 	.word	0x080306f8
 
 0801cf14 <_ZNK8touchgfx9ConstFont4findEt>:
  801cf14:	b5f0      	push	{r4, r5, r6, r7, lr}
@@ -70450,7 +70450,7 @@ jcopy_block_row (JBLOCKROW input_row, JBLOCKROW output_row,
  801d082:	b007      	add	sp, #28
  801d084:	bd30      	pop	{r4, r5, pc}
  801d086:	bf00      	nop
- 801d088:	08030790 	.word	0x08030790
+ 801d088:	08030780 	.word	0x08030780
 
 0801d08c <_ZN8touchgfx6Screen16handleClickEventERKNS_10ClickEventE>:
  801d08c:	e92d 41f0 	stmdb	sp!, {r4, r5, r6, r7, r8, lr}
@@ -70517,7 +70517,7 @@ jcopy_block_row (JBLOCKROW input_row, JBLOCKROW output_row,
  801d126:	e9c4 660c 	strd	r6, r6, [r4, #48]	; 0x30
  801d12a:	b00a      	add	sp, #40	; 0x28
  801d12c:	e8bd 81f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, pc}
- 801d130:	08030768 	.word	0x08030768
+ 801d130:	08030758 	.word	0x08030758
 
 0801d134 <_ZN8touchgfx6Screen15handleDragEventERKNS_9DragEventE>:
  801d134:	e92d 41f0 	stmdb	sp!, {r4, r5, r6, r7, r8, lr}
@@ -70619,8 +70619,8 @@ jcopy_block_row (JBLOCKROW input_row, JBLOCKROW output_row,
  801d220:	b008      	add	sp, #32
  801d222:	e8bd 81f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, pc}
  801d226:	bf00      	nop
- 801d228:	08030768 	.word	0x08030768
- 801d22c:	0803077c 	.word	0x0803077c
+ 801d228:	08030758 	.word	0x08030758
+ 801d22c:	0803076c 	.word	0x0803076c
 
 0801d230 <_ZN8touchgfx8Drawable20getCachedVisibleRectEv>:
  801d230:	b537      	push	{r0, r1, r2, r4, r5, lr}
@@ -70720,8 +70720,8 @@ jcopy_block_row (JBLOCKROW input_row, JBLOCKROW output_row,
  801d312:	4798      	blx	r3
  801d314:	4620      	mov	r0, r4
  801d316:	bd70      	pop	{r4, r5, r6, pc}
- 801d318:	080307a4 	.word	0x080307a4
- 801d31c:	08030498 	.word	0x08030498
+ 801d318:	08030794 	.word	0x08030794
+ 801d31c:	08030488 	.word	0x08030488
  801d320:	20015fb2 	.word	0x20015fb2
  801d324:	20015fb0 	.word	0x20015fb0
 
@@ -78019,7 +78019,7 @@ jcopy_block_row (JBLOCKROW input_row, JBLOCKROW output_row,
  8021f6c:	e9c0 221c 	strd	r2, r2, [r0, #112]	; 0x70
  8021f70:	4770      	bx	lr
  8021f72:	bf00      	nop
- 8021f74:	08030a08 	.word	0x08030a08
+ 8021f74:	080309f8 	.word	0x080309f8
 
 08021f78 <_ZN8touchgfx8LCD16bpp16blitCopyARGB8888EPKmRKNS_4RectES5_h>:
  8021f78:	e92d 4ff0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
@@ -89897,7 +89897,7 @@ jcopy_block_row (JBLOCKROW input_row, JBLOCKROW output_row,
  802a82c:	b004      	add	sp, #16
  802a82e:	e8bd 81f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, pc}
  802a832:	bf00      	nop
- 802a834:	0803077c 	.word	0x0803077c
+ 802a834:	0803076c 	.word	0x0803076c
 
 0802a838 <_ZN8touchgfx8Gestures18registerClickEventENS_10ClickEvent14ClickEventTypeEtt>:
  802a838:	b5f0      	push	{r4, r5, r6, r7, lr}
@@ -89970,8 +89970,8 @@ jcopy_block_row (JBLOCKROW input_row, JBLOCKROW output_row,
  802a8ee:	73a1      	strb	r1, [r4, #14]
  802a8f0:	e7e5      	b.n	802a8be <_ZN8touchgfx8Gestures18registerClickEventENS_10ClickEvent14ClickEventTypeEtt+0x86>
  802a8f2:	bf00      	nop
- 802a8f4:	08030768 	.word	0x08030768
- 802a8f8:	08030790 	.word	0x08030790
+ 802a8f4:	08030758 	.word	0x08030758
+ 802a8f8:	08030780 	.word	0x08030780
 
 0802a8fc <__aeabi_atexit>:
  802a8fc:	460b      	mov	r3, r1
@@ -90055,9 +90055,9 @@ jcopy_block_row (JBLOCKROW input_row, JBLOCKROW output_row,
  802a98c:	e7f3      	b.n	802a976 <__assert_func+0x12>
  802a98e:	bf00      	nop
  802a990:	200000bc 	.word	0x200000bc
- 802a994:	08030a58 	.word	0x08030a58
- 802a998:	08030a65 	.word	0x08030a65
- 802a99c:	08030a93 	.word	0x08030a93
+ 802a994:	08030a48 	.word	0x08030a48
+ 802a998:	08030a55 	.word	0x08030a55
+ 802a99c:	08030a83 	.word	0x08030a83
 
 0802a9a0 <atexit>:
  802a9a0:	2300      	movs	r3, #0
@@ -90210,7 +90210,7 @@ jcopy_block_row (JBLOCKROW input_row, JBLOCKROW output_row,
  802aae6:	61a3      	str	r3, [r4, #24]
  802aae8:	e7d2      	b.n	802aa90 <__sinit+0xc>
  802aaea:	bf00      	nop
- 802aaec:	08030af4 	.word	0x08030af4
+ 802aaec:	08030ae4 	.word	0x08030ae4
  802aaf0:	0802aa1d 	.word	0x0802aa1d
 
 0802aaf4 <__sfp>:
@@ -90265,7 +90265,7 @@ jcopy_block_row (JBLOCKROW input_row, JBLOCKROW output_row,
  802ab72:	603b      	str	r3, [r7, #0]
  802ab74:	e7ee      	b.n	802ab54 <__sfp+0x60>
  802ab76:	bf00      	nop
- 802ab78:	08030af4 	.word	0x08030af4
+ 802ab78:	08030ae4 	.word	0x08030ae4
  802ab7c:	ffff0001 	.word	0xffff0001
 
 0802ab80 <fiprintf>:
@@ -90338,10 +90338,10 @@ jcopy_block_row (JBLOCKROW input_row, JBLOCKROW output_row,
  802ac16:	4798      	blx	r3
  802ac18:	3601      	adds	r6, #1
  802ac1a:	e7f2      	b.n	802ac02 <__libc_init_array+0x1e>
- 802ac1c:	08030b7c 	.word	0x08030b7c
- 802ac20:	08030b7c 	.word	0x08030b7c
- 802ac24:	08030b7c 	.word	0x08030b7c
- 802ac28:	08030b98 	.word	0x08030b98
+ 802ac1c:	08030b6c 	.word	0x08030b6c
+ 802ac20:	08030b6c 	.word	0x08030b6c
+ 802ac24:	08030b6c 	.word	0x08030b6c
+ 802ac28:	08030b88 	.word	0x08030b88
 
 0802ac2c <__retarget_lock_init_recursive>:
  802ac2c:	4770      	bx	lr
@@ -90878,14 +90878,14 @@ jcopy_block_row (JBLOCKROW input_row, JBLOCKROW output_row,
  802b0cc:	f000 f880 	bl	802b1d0 <_printf_i>
  802b0d0:	e7e4      	b.n	802b09c <_vfiprintf_r+0x208>
  802b0d2:	bf00      	nop
- 802b0d4:	08030ab4 	.word	0x08030ab4
- 802b0d8:	08030ad4 	.word	0x08030ad4
- 802b0dc:	08030a94 	.word	0x08030a94
- 802b0e0:	08030af8 	.word	0x08030af8
- 802b0e4:	08030b02 	.word	0x08030b02
+ 802b0d4:	08030aa4 	.word	0x08030aa4
+ 802b0d8:	08030ac4 	.word	0x08030ac4
+ 802b0dc:	08030a84 	.word	0x08030a84
+ 802b0e0:	08030ae8 	.word	0x08030ae8
+ 802b0e4:	08030af2 	.word	0x08030af2
  802b0e8:	00000000 	.word	0x00000000
  802b0ec:	0802ae6f 	.word	0x0802ae6f
- 802b0f0:	08030afe 	.word	0x08030afe
+ 802b0f0:	08030aee 	.word	0x08030aee
 
 0802b0f4 <_printf_common>:
  802b0f4:	e92d 47f0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, lr}
@@ -91221,8 +91221,8 @@ jcopy_block_row (JBLOCKROW input_row, JBLOCKROW output_row,
  802b40c:	f104 0619 	add.w	r6, r4, #25
  802b410:	e7f5      	b.n	802b3fe <_printf_i+0x22e>
  802b412:	bf00      	nop
- 802b414:	08030b09 	.word	0x08030b09
- 802b418:	08030b1a 	.word	0x08030b1a
+ 802b414:	08030af9 	.word	0x08030af9
+ 802b418:	08030b0a 	.word	0x08030b0a
 
 0802b41c <cleanup_glue>:
  802b41c:	b538      	push	{r3, r4, r5, lr}
@@ -91578,9 +91578,9 @@ jcopy_block_row (JBLOCKROW input_row, JBLOCKROW output_row,
  802b718:	f04f 37ff 	mov.w	r7, #4294967295
  802b71c:	e7ea      	b.n	802b6f4 <__swbuf_r+0x6c>
  802b71e:	bf00      	nop
- 802b720:	08030ab4 	.word	0x08030ab4
- 802b724:	08030ad4 	.word	0x08030ad4
- 802b728:	08030a94 	.word	0x08030a94
+ 802b720:	08030aa4 	.word	0x08030aa4
+ 802b724:	08030ac4 	.word	0x08030ac4
+ 802b728:	08030a84 	.word	0x08030a84
 
 0802b72c <_write_r>:
  802b72c:	b538      	push	{r3, r4, r5, lr}
@@ -91690,9 +91690,9 @@ jcopy_block_row (JBLOCKROW input_row, JBLOCKROW output_row,
  802b818:	e7f7      	b.n	802b80a <__swsetup_r+0xba>
  802b81a:	bf00      	nop
  802b81c:	200000bc 	.word	0x200000bc
- 802b820:	08030ab4 	.word	0x08030ab4
- 802b824:	08030ad4 	.word	0x08030ad4
- 802b828:	08030a94 	.word	0x08030a94
+ 802b820:	08030aa4 	.word	0x08030aa4
+ 802b824:	08030ac4 	.word	0x08030ac4
+ 802b828:	08030a84 	.word	0x08030a84
 
 0802b82c <__register_exitproc>:
  802b82c:	e92d 43f8 	stmdb	sp!, {r3, r4, r5, r6, r7, r8, r9, lr}
@@ -91759,7 +91759,7 @@ jcopy_block_row (JBLOCKROW input_row, JBLOCKROW output_row,
  802b8da:	e7c6      	b.n	802b86a <__register_exitproc+0x3e>
  802b8dc:	2001625c 	.word	0x2001625c
  802b8e0:	200161d0 	.word	0x200161d0
- 802b8e4:	08030b2c 	.word	0x08030b2c
+ 802b8e4:	08030b1c 	.word	0x08030b1c
  802b8e8:	0802ac35 	.word	0x0802ac35
  802b8ec:	20000120 	.word	0x20000120
 
@@ -91953,9 +91953,9 @@ jcopy_block_row (JBLOCKROW input_row, JBLOCKROW output_row,
  802ba82:	bf08      	it	eq
  802ba84:	68ec      	ldreq	r4, [r5, #12]
  802ba86:	e7da      	b.n	802ba3e <_fflush_r+0x22>
- 802ba88:	08030ab4 	.word	0x08030ab4
- 802ba8c:	08030ad4 	.word	0x08030ad4
- 802ba90:	08030a94 	.word	0x08030a94
+ 802ba88:	08030aa4 	.word	0x08030aa4
+ 802ba8c:	08030ac4 	.word	0x08030ac4
+ 802ba90:	08030a84 	.word	0x08030a84
 
 0802ba94 <_lseek_r>:
  802ba94:	b538      	push	{r3, r4, r5, lr}
@@ -92415,11 +92415,11 @@ jcopy_block_row (JBLOCKROW input_row, JBLOCKROW output_row,
  802bec8:	f7ff f982 	bl	802b1d0 <_printf_i>
  802becc:	e7eb      	b.n	802bea6 <_svfiprintf_r+0x1c2>
  802bece:	bf00      	nop
- 802bed0:	08030af8 	.word	0x08030af8
- 802bed4:	08030b02 	.word	0x08030b02
+ 802bed0:	08030ae8 	.word	0x08030ae8
+ 802bed4:	08030af2 	.word	0x08030af2
  802bed8:	00000000 	.word	0x00000000
  802bedc:	0802bc2f 	.word	0x0802bc2f
- 802bee0:	08030afe 	.word	0x08030afe
+ 802bee0:	08030aee 	.word	0x08030aee
 
 0802bee4 <_read_r>:
  802bee4:	b538      	push	{r3, r4, r5, lr}
